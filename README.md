@@ -10,7 +10,7 @@ and place them in a local feed from NuGet Package Manager’s Package Sources me
 
 ![nuget](/nuget.png)
 
-2. Install both NuGet packages in the CMS project. After installation, go to the Sites application and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
+2. Install both NuGet packages in the CMS project. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
 
 3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common.x.y.z.nupkg__ package in the MVC project
 
