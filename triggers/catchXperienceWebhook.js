@@ -2,9 +2,12 @@ const triggerNoun = 'Catch Xperience Webhook'
 
 const performHook = (z, bundle) => {
     // Enusre that the request came from the website
-    const requestDomain = bundle.rawRequest.headers['Http-Xperience-Domain'];
+    // The Http-Xperience-Domain header will contain the site domain
+    // and all aliases separated by semicolon
+    const requestDomains = bundle.rawRequest.headers['Http-Xperience-Domain'].split(';');
     const authorizedDomain = bundle.authData.website.split('/')[2];
-    if(requestDomain && authorizedDomain !== requestDomain) {
+
+    if(requestDomains && !requestDomains.includes(authorizedDomain)) {
         throw new z.errors.HaltedError('Skipped, domain not matched.');
     }
 
