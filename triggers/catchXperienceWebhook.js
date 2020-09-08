@@ -14,10 +14,6 @@ const performHook = (z, bundle) => {
     return [bundle.cleanedRequest];
 }
 
-const getHostname = (url) => {
-    return new URL(url).hostname;
-  }
-
 module.exports = {
     key: 'catch_xperience_webhook',
     noun: triggerNoun,
