@@ -8,7 +8,7 @@
 
 and place them in a local feed from NuGet Package Manager’s Package Sources menu:
 
-![nuget](/nuget.png)
+![nuget](/assets/nuget.png)
 
 2. Install both NuGet packages in the CMS project. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
 
@@ -23,7 +23,7 @@ and place them in a local feed from NuGet Package Manager’s Package Sources me
 3. In __step 1__ of the Zap, use the __Kentico Xperience__ app and the __Catch Xperience Webhook__ event.  
 The Webhooks by Zapier app and the Catch Hook event works as well, but requires a Zapier Premium account
 
-![selectapp](/selectapp.png)
+![selectapp](/assets/selectapp.png)
 
 4. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site
 
@@ -31,12 +31,12 @@ The Webhooks by Zapier app and the Catch Hook event works as well, but requires 
 
 5. Once you have authenticated, copy the __Webhook URL__
 
-![zapurl](/zapurl.png)
+![zapurl](/assets/zapurl.png)
 
 6. In the Xperience administration, create a new webhook in the __Zapier__ application. Choose a name which describes what the webhook accomplishes, and choose an object type and event that will trigger the webhook.  
 Copy the __Webhook URL__ from step 5 into the Zapier Url field
 
-![newwebhook](/newwebhook.png)
+![newwebhook](/assets/newwebhook.png)
 
  7. Save the webhook. You should see a `REGISTER` event in the __Event__ log if successful
 
@@ -44,4 +44,4 @@ Copy the __Webhook URL__ from step 5 into the Zapier Url field
 
  9. After performing the action, click the __Test trigger__ button on the Zap in Zapier. You should shortly see “We found a request!” with the data sent from Xperience
 
-![testtrigger](/testtrigger.png)
+![testtrigger](/assets/testtrigger.png)
