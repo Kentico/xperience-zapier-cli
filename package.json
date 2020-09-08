@@ -1,12 +1,13 @@
 {
   "name": "xperience-zapier-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
     "_zapier-build": "jest --testTimeout 10000"
   },
   "dependencies": {
+    "xml2js": "^0.4.23",
     "zapier-platform-core": "10.1.0"
   },
   "devDependencies": {

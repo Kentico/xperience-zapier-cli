@@ -4,6 +4,8 @@ const {
   afters = [],
 } = require('./authentication');
 const catchXperienceWebhook = require('./triggers/catchXperienceWebhook');
+const getObjectTypes = require('./triggers/dropdowns/getObjectTypes');
+const createObject = require('./actions/createObject');
 
 module.exports = {
   version: require('./package.json').version,
@@ -12,14 +14,18 @@ module.exports = {
   authentication,
   beforeRequest: [...befores],
   afterResponse: [...afters],
-  
+
   triggers: {
-    [catchXperienceWebhook.key]: catchXperienceWebhook
+    [catchXperienceWebhook.key]: catchXperienceWebhook,
+
+    [getObjectTypes.key]: getObjectTypes
   },
 
   searches: {},
 
-  creates: {},
+  creates: {
+    [createObject.key]: createObject,
+  },
 
   resources: {},
 };
