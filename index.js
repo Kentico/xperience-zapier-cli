@@ -5,7 +5,7 @@ const {
 } = require('./authentication');
 const catchXperienceWebhook = require('./triggers/catchXperienceWebhook');
 const getObjectTypes = require('./triggers/dropdowns/getObjectTypes');
-const createObject = require('./actions/createObject');
+const createObjectAction = require('./actions/createObjectAction');
 
 module.exports = {
   version: require('./package.json').version,
@@ -24,7 +24,7 @@ module.exports = {
   searches: {},
 
   creates: {
-    [createObject.key]: createObject,
+    [createObjectAction.key]: createObjectAction,
   },
 
   resources: {},

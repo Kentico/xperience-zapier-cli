@@ -1,4 +1,4 @@
-function getObjectTypeField(extras) {
+function getObjectTypesField(extras) {
     return Object.assign(
         {
             label: 'Object type',
@@ -10,4 +10,4 @@ function getObjectTypeField(extras) {
     );
 }
 
-module.exports = getObjectTypeField;
+module.exports = getObjectTypesField;
