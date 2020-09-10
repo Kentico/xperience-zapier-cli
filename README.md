@@ -12,7 +12,7 @@
 
 ## Installing the packages in Xperience
 
-These NuGet packages make it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified. However, if you'd like to use the Zapier application without installing the NuGet packages, skip to [Using the integration without NuGet packages](#using-the-integration-without-nuget-packages)
+> :gear: These NuGet packages make it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified. However, if you'd like to use the Zapier application without installing the NuGet packages, skip to [Using the integration without NuGet packages](#using-the-integration-without-nuget-packages)
 
 1. The NuGet packages are not currently on nuget.org, so you will need to download __Xperience.Zapier.x.y.z.nupkg__ and __Xperience.Zapier.Common.x.y.z.nupkg__ from
 
@@ -52,7 +52,7 @@ The Webhooks by Zapier app and the Catch Hook event works as well, but requires 
 
 5. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
 
-> **_NOTE:_**  If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible. Be sure to add the ngrok URL to your site's __Domain Aliases__
+> :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible. Be sure to add the ngrok URL to your site's __Domain Aliases__
 
 6. Once you have authenticated, copy the __Webhook URL__
 
