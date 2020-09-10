@@ -12,17 +12,18 @@ async function createObject(z, bundle, objectType) {
         }
     }
 
-    /*const options = {
+    const options = {
         url: `${bundle.authData.website}/rest/${objectType}/currentsite?format=json`,
         method: 'POST',
         headers: {
             'Accept': 'application/json'
-        }
+        },
+        body: input
     };
 
-    const response = await z.request(options);*/
+    const response = await z.request(options);
 
-    return {'input':input};
+    return z.JSON.parse(response.content);
 }
 
 module.exports = createObject;

@@ -1,17 +1,7 @@
+const handleErrors = require('./utils/handleErrors');
+
 const test = (z, bundle) =>
     z.request({ url: `${bundle.authData.website}/rest` });
-
-const handleBadResponses = (response, z, bundle) => {
-    if (response.status === 401) {
-        throw new z.errors.Error(
-        'The username and/or password you supplied is incorrect',
-        'AuthenticationError',
-        response.status
-        );
-    }
-
-    return response;
-};
 
 const Authentication = {
     config: {
@@ -29,7 +19,7 @@ const Authentication = {
         connectionLabel: '{{bundle.authData.website}}'
     },
     befores: [],
-    afters: [handleBadResponses],
+    afters: [handleErrors],
 };
 
 module.exports = Authentication;

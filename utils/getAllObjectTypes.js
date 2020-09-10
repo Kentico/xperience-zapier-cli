@@ -1,4 +1,3 @@
-//const { transform } = require('camaro');
 const parseString = require('xml2js').parseString;
 
 async function getAllRESTObjects(z, bundle) {
@@ -10,15 +9,15 @@ async function getAllRESTObjects(z, bundle) {
 
     const response = await z.request(options);
     
-    /* Hopefully we can use camaro soon, currently appears bugged
+    /*
     const selector = `./service/app:workspace[./a10:title[contains(text(), 'Objects')]]/app:collection`;
     const template = [selector, {
         codename: 'a10:title'
     }];
 
-    const json = await transform(response.content, template);
-    z.console.log(json);
+    const test = await transform(response.content, template);
     */
+    
 
     parseString(response.content, function (err, json) {
         
