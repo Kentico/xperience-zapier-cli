@@ -5,7 +5,9 @@ const {
 } = require('./authentication');
 const catchXperienceWebhook = require('./triggers/catchXperienceWebhook');
 const getObjectTypes = require('./triggers/dropdowns/getObjectTypes');
+const getPageTypes = require('./triggers/dropdowns/getPageTypes');
 const createObjectAction = require('./actions/createObjectAction');
+const createPageAction = require('./actions/createPageAction');
 
 module.exports = {
   version: require('./package.json').version,
@@ -18,13 +20,15 @@ module.exports = {
   triggers: {
     [catchXperienceWebhook.key]: catchXperienceWebhook,
 
-    [getObjectTypes.key]: getObjectTypes
+    [getObjectTypes.key]: getObjectTypes,
+    [getPageTypes.key]: getPageTypes
   },
 
   searches: {},
 
   creates: {
     [createObjectAction.key]: createObjectAction,
+    [createPageAction.key]: createPageAction
   },
 
   resources: {},

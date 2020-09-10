@@ -20,7 +20,7 @@ module.exports = {
     display: {
         important: true,
         label: triggerNoun,
-        description: 'Triggers when your Xperience website sends a webhook to Zapier'
+        description: 'Triggers when your Xperience website sends a webhook to Zapier.'
     },
     operation: {
         type: 'hook',

@@ -22,7 +22,6 @@ async function createObject(z, bundle, objectType) {
     };
 
     const response = await z.request(options);
-
     return z.JSON.parse(response.content);
 }
 
