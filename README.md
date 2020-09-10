@@ -26,7 +26,7 @@ and place them in a local feed from NuGet Package Manager’s Package Sources me
 
 ## Creating a webhook
 
-1. Use [this link](https://zapier.com/developer/public-invite/116028/13f7f2aec5d2a9709f3871cad53b3fe9/) to gain access to the private Kentico Xperience Zapier application
+1. Use [this link](https://zapier.com/developer/public-invite/116681/75335383171d95e2bdf38c62abf3d8c0/) to gain access to the private Kentico Xperience Zapier application
 
 2. [Enable the REST service](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) in Xperience
 
