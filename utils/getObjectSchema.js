@@ -25,7 +25,7 @@ async function getObjectSchema(z, bundle, objectType) {
     }
 
     const options = {
-        url: `${bundle.authData.website}/rest/cms.class/${objectType}?localize=en-US&format=json`,
+        url: `${bundle.authData.website}/rest/cms.class/all?where=ClassName='${objectType}'&localize=en-US&format=json&columns=ClassFormDefinition`,
         method: 'GET',
         headers: {
             'Accept': 'application/json'
@@ -33,16 +33,19 @@ async function getObjectSchema(z, bundle, objectType) {
     };
 
     const response = await z.request(options);
-    const formDefinition = z.JSON.parse(response.content).data.ClassFormDefinition;
+    const classes = z.JSON.parse(response.content).cms_classes;
+    if(classes.length > 1) {
 
-    parseString(formDefinition, function (err, json) {
+        const foundClass = classes[0].CMS_Class;
+        parseString(foundClass[0].ClassFormDefinition, function (err, json) {
         
-        const fields = json.form.field;
-        retVal = fields.map(makeField);
-    });
-
-    // Remove PK and GUID columns
-    retVal =  retVal.filter(f => !f.isPK && f.columntype !== 'guid');
+            const fields = json.form.field;
+            retVal = fields.map(makeField);
+        });
+    
+        // Remove PK and GUID columns
+        retVal =  retVal.filter(f => !f.isPK && f.columntype !== 'guid');
+    }
 
     return retVal;
 }
