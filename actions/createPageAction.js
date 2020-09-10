@@ -1,4 +1,5 @@
 const getPageTypesField = require('../fields/getPageTypesField');
+const getPageColumnsField = require('../fields/getPageColumnsField');
 
 async function execute(z, bundle) {
 
@@ -18,6 +19,9 @@ const createPageAction = {
         perform: execute,
         inputFields: [
             getPageTypesField({ required: true, altersDynamicFields: true }),
+            async function (z, bundle) {
+                return await getPageColumnsField(z, bundle, bundle.inputData.pageType);
+            }
         ],
         sample: {
             typeName: 'DancingGoat.Article'

@@ -1,10 +1,10 @@
 const parseString = require('xml2js').parseString;
 
-async function getObjectSchema(z, bundle, objectType) {
+async function getPageTypeSchema(z, bundle, pageType) {
     let retVal = [];
-    if(!objectType) return retVal;
+    if(!pageType) return retVal;
 
-    function makeField(f) {
+    function makeField(f, nameField) {
         const fieldAttrs = f['$'];
         const fieldProps = f.properties;
         let field = {
@@ -14,6 +14,7 @@ async function getObjectSchema(z, bundle, objectType) {
             isPK: fieldAttrs.isPK,
             allowempty: fieldAttrs.allowempty,
             visible: fieldAttrs.visible,
+            isnamecolumn: fieldAttrs.column === nameField
         };
         if(fieldProps) {
             field.fieldcaption = fieldProps[0].fieldcaption ? fieldProps[0].fieldcaption[0] : undefined,
@@ -28,10 +29,10 @@ async function getObjectSchema(z, bundle, objectType) {
         url: `${bundle.authData.website}/rest/cms.class/all`,
         method: 'GET',
         params: {
-            where: `ClassName='${objectType}'`,
+            where: `ClassName='${pageType}'`,
             localize: 'en-US',
             format: 'json',
-            columns: 'ClassFormDefinition'
+            columns: 'ClassFormDefinition,ClassNodeNameSource'
         },
         headers: {
             'Accept': 'application/json'
@@ -46,7 +47,7 @@ async function getObjectSchema(z, bundle, objectType) {
         parseString(foundClass.ClassFormDefinition, function (err, json) {
         
             const fields = json.form.field;
-            retVal = fields.map(makeField);
+            retVal = fields.map(f => makeField(f, foundClass.ClassNodeNameSource));
         });
     
         // Remove PK and GUID columns
@@ -56,4 +57,4 @@ async function getObjectSchema(z, bundle, objectType) {
     return retVal;
 }
 
-module.exports = getObjectSchema;
+module.exports = getPageTypeSchema;
