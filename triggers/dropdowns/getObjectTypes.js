@@ -1,7 +1,10 @@
 const getAllObjectTypes = require('../../utils/getAllObjectTypes');
 
 async function execute(z, bundle) {
-    const objectTypes = await getAllObjectTypes(z, bundle);
+    let objectTypes = await getAllObjectTypes(z, bundle);
+
+    // Remove cms.document- there's a separate action for that
+    objectTypes = objectTypes.filter(t => t.name !== 'cms.document');
 
     return objectTypes;
 }

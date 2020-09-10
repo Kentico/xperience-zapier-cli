@@ -1,6 +1,6 @@
 const parseString = require('xml2js').parseString;
 
-async function getAllRESTObjects(z, bundle) {
+async function getAllObjectTypes(z, bundle) {
     let retVal = [];
     const options = {
         url: `${bundle.authData.website}/rest`,
@@ -9,7 +9,7 @@ async function getAllRESTObjects(z, bundle) {
 
     const response = await z.request(options);
     
-    /*
+    /* Maybe someday we can use camaro
     const selector = `./service/app:workspace[./a10:title[contains(text(), 'Objects')]]/app:collection`;
     const template = [selector, {
         codename: 'a10:title'
@@ -18,7 +18,6 @@ async function getAllRESTObjects(z, bundle) {
     const test = await transform(response.content, template);
     */
     
-
     parseString(response.content, function (err, json) {
         
         const arr = json.service['app:workspace'];
@@ -38,4 +37,4 @@ async function getAllRESTObjects(z, bundle) {
     return retVal;
 }
 
-module.exports = getAllRESTObjects;
+module.exports = getAllObjectTypes;
