@@ -11,6 +11,9 @@
 - __Create New Object__: Creates a new object of selected type in your Xperience application, assigned to the website specified when authenticating the Zapier integration.
 
 ## Installing the packages in Xperience
+
+These NuGet packages make it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified. However, if you'd like to use the Zapier application without installing the NuGet packages, skip to [Using the integration without NuGet packages](#using-the-integration-without-nuget-packages)
+
 1. The NuGet packages are not currently on nuget.org, so you will need to download __Xperience.Zapier.x.y.z.nupkg__ and __Xperience.Zapier.Common.x.y.z.nupkg__ from
 
 - https://github.com/kentico-ericd/xperience-zapier
@@ -23,6 +26,16 @@ and place them in a local feed from NuGet Package Manager’s Package Sources me
 2. Install both NuGet packages in the CMS project. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
 
 3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common.x.y.z.nupkg__ package in the MVC project
+
+## Using the integration without NuGet packages
+
+1. Create a new Zap on http://zapier.com using the __Webhooks by Zapier__ app and the __Catch hook__ action
+
+1. Copy the __Custom Webhook URL__ in the trigger
+
+1. In Xperience, determine when and how the Zapier trigger should be fired. For example, it could be within a [custom workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps) or an [event handler](https://docs.kentico.com/k12sp/custom-development/handling-global-events)
+
+1. In your code, use [`HttpClient`](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1) to send a POST request to the __Custom Webhook URL__ with a body that contains the information you need in the Zap
 
 ## Creating a webhook
 
