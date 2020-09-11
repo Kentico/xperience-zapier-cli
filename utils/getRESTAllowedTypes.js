@@ -1,6 +1,6 @@
 const parseString = require('xml2js').parseString;
 
-async function getAllObjectTypes(z, bundle) {
+async function getRESTAllowedTypes(z, bundle) {
     let retVal = [];
     const options = {
         url: `${bundle.authData.website}/rest`,
@@ -37,4 +37,4 @@ async function getAllObjectTypes(z, bundle) {
     return retVal;
 }
 
-module.exports = getAllObjectTypes;
+module.exports = getRESTAllowedTypes;

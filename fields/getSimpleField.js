@@ -5,7 +5,8 @@ function getSimpleField(field) {
             label: `${field.column} ${(field.fieldcaption && field.fieldcaption !== field.column ?
                 '('+field.fieldcaption+')' : '')}`,
             required: !field.allowempty,
-            helpText: field.fielddescription || field.explanationtext
+            helpText: field.fielddescription || field.explanationtext,
+            default: field.defaultvalue || ''
         };
 
         return Object.assign(base, extra);

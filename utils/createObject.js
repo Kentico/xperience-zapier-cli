@@ -1,7 +1,7 @@
-const getObjectSchema = require('./getObjectSchema');
+const getClassSchema = require('./getClassSchema');
 
 async function createObject(z, bundle, objectType) {
-    const schema = await getObjectSchema(z, bundle, objectType);
+    const schema = await getClassSchema(z, bundle, objectType);
 
     // Copy bundle.inputData and only take prop if found in schema columns
     const input = JSON.parse(JSON.stringify(bundle.inputData));

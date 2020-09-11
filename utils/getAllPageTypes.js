@@ -1,8 +1,12 @@
 async function getAllPageTypes(z, bundle) {
     let retVal = [];
     const options = {
-        url: `${bundle.authData.website}/rest/cms.documenttype?format=json&columns=ClassName`,
-        method: 'GET'
+        url: `${bundle.authData.website}/rest/cms.documenttype`,
+        method: 'GET',
+        params: {
+            format: 'json',
+            columns: 'ClassID,ClassName'
+        }
     };
 
     const response = await z.request(options);
@@ -13,7 +17,7 @@ async function getAllPageTypes(z, bundle) {
         const classes = types[0].CMS_Class;
         retVal = classes.map((obj, index) => {
             return {
-                id: index,
+                id: obj.ClassID,
                 name: obj.ClassName
             };
         });
