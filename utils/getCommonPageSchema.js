@@ -4,7 +4,11 @@ const returnColumns = [
     'DocumentCulture',
     'DocumentPageTemplateID',
     'NodeTemplateForAllCultures',
-    'NodeInheritPageTemplate'
+    'NodeInheritPageTemplate',
+    'IsSecuredNode',
+    'RequiresSSL',
+    'NodeIsACLOwner',
+    'NodeACLID'
 ];
 
 async function getCommonPageSchema(z, bundle) {

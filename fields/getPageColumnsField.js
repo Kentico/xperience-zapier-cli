@@ -16,6 +16,15 @@ const sections = {
             'NodeTemplateForAllCultures',
             'NodeInheritPageTemplate'
         ]
+    },
+    security: {
+        description: 'Node security',
+        columns: [
+            'IsSecuredNode',
+            'RequiresSSL',
+            'NodeACLID',
+            'NodeIsACLOwner'
+        ]
     }
 };
 
@@ -41,6 +50,14 @@ function getSection(commonSchema, sectionName) {
     ];
 }
 
+/**
+ * Loads input fields for a page type by combining columns from cms.document, cms.tree,
+ * and the custom page type class.
+ * 
+ * @param {} z 
+ * @param {*} bundle 
+ * @param {integer} classID 
+ */
 async function getPageColumnsField(z, bundle, classID) {
     
     let classSchema = await getClassSchema(z, bundle, classID);
@@ -64,6 +81,7 @@ async function getPageColumnsField(z, bundle, classID) {
             helpText: 'The path of the page to insert this page under. For example, "/Blogs/Food"'
         },
         ...getSection(commonSchema, 'template'),
+        ...getSection(commonSchema, 'security'),
         {
             key: 'custom_fields',
             type: 'copy',
