@@ -5,7 +5,7 @@ function handleErrors(response, z, bundle) {
             return response;
         case 401:
             throw new z.errors.Error(
-                'The username and/or password you supplied is incorrect',
+                'Please check your credentials, or the Xperience Event Log for more information',
                 'AuthenticationError',
                 response.status
                 );

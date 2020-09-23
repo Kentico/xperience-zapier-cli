@@ -1,10 +1,16 @@
 const getRESTAllowedTypes = require('../../utils/getRESTAllowedTypes');
+const excludedObjects = [
+    'cms.document',
+    'cms.documenttype',
+    'cms.node'
+];
 
 async function execute(z, bundle) {
     let objectTypes = await getRESTAllowedTypes(z, bundle);
 
     // Remove cms.document- there's a separate action for that
-    objectTypes = objectTypes.filter(t => t.name !== 'cms.document');
+    // Also remove unsupported types for the drop-down
+    objectTypes = objectTypes.filter(t => !excludedObjects.includes(t.name));
 
     return objectTypes;
 }

@@ -9,7 +9,15 @@ function getSimpleField(field) {
             default: field.defaultvalue || ''
         };
 
-        return Object.assign(base, extra);
+        // Add extras
+        let retVal = Object.assign(base, extra);
+
+        // Add current datetime if is datetime field with no default value
+        if(retVal.type === 'datetime' && retVal.default === '') {
+            retVal.default = new Date().toLocaleString();
+        }
+
+        return retVal;
     }
 
     switch (field.columntype) {
@@ -25,6 +33,7 @@ function getSimpleField(field) {
             return getField(field, {type: 'integer'});
 
         case 'decimal':
+        case 'double':
         case 'float':
             return getField(field, {type: 'number'});
 

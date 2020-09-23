@@ -13,7 +13,7 @@ async function getClassSchema(z, bundle, identifier) {
             columnsize: fieldAttrs.columnsize,
             isPK: fieldAttrs.isPK || false,
             allowempty: fieldAttrs.allowempty || false,
-            visible: fieldAttrs.visible
+            visible: fieldAttrs.visible && fieldAttrs.visible === 'true'
         };
         if(fieldProps) {
             fieldProps = fieldProps[0];
@@ -28,6 +28,18 @@ async function getClassSchema(z, bundle, identifier) {
 
     let where;
     if(typeof identifier === 'string') {
+
+        // "ma.automationaction" is actually "cms.workflowaction" in CMS_Class
+        if(identifier === 'ma.automationaction') {
+            identifier = 'cms.workflowaction';
+        }
+
+        // For some reason, /rest returns MA classes like "ma.automationstate" but they
+        // actually have a ClassName of "cms.automationstate" in CMS_Class
+        if(identifier.startsWith("ma")) {
+            identifier = "cms." + identifier.split('.')[1];
+        }
+
         where = `ClassName='${identifier}'`;
     }
     else {

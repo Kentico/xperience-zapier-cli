@@ -24,11 +24,7 @@ const createObjectAction = {
             async function (z, bundle) {
                 return await getObjectColumnsField(z, bundle, bundle.inputData.objectType);
             }
-        ],
-        sample: {
-            typeName: 'om.contact'
-        },
-        outputFields: [],
+        ]
     },
 };
 
