@@ -15,18 +15,11 @@
 
 > :gear: These NuGet packages make it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified. However, if you'd like to use the Zapier application without installing the NuGet packages, skip to [Using the integration without NuGet packages](#using-the-integration-without-nuget-packages)
 
-1. The NuGet packages are not currently on nuget.org, so you will need to download __Xperience.Zapier.x.y.z.nupkg__ and __Xperience.Zapier.Common.x.y.z.nupkg__ from
+1. In your Xperience administration project, open the NuGet Package Manager and install the __Xperience.Zapier__ and __Xperience.Zapier.Common__ packages
 
-- https://github.com/kentico-ericd/xperience-zapier
-- https://github.com/kentico-ericd/xperience-zapier-common
+2. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
 
-and place them in a local feed from NuGet Package Manager’s Package Sources menu:
-
-![nuget](/assets/nuget.png)
-
-2. Install both NuGet packages in the CMS project. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
-
-3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common.x.y.z.nupkg__ package in the MVC project
+3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common__ package in the MVC project
 
 ## Using the integration without NuGet packages
 
