@@ -4,14 +4,14 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 
 ## Index
 
-- [Zapier Integrations](#available-integrations)
+- [Zapier integrations](#available-integrations)
 - [Installation](#installing-the-packages-in-xperience)
     - [Using without installing](#using-the-integration-without-nuget-packages)
-- [Xperience Integrations](#xperience-integrations)
-- [Creating a Webhook](#creating-a-webhook)
+- [Xperience integrations](#xperience-integrations)
+- [Creating a webhook](#creating-a-webhook)
 
 
-## Available integrations
+## Zapier integrations
 
 ### Triggers
 
@@ -42,7 +42,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 
 1. In your code, use [`HttpClient`](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1) to send a POST request to the __Custom Webhook URL__ with a body that contains the information you need in the Zap
 
-## Xperience Integrations
+## Xperience integrations
 
 After installing the NuGet packages in the Xperience application, you can find a new __Zapier__ module under the __Configuration__ menu. Here, you can create new "webhooks" by selecting an object type and action. The specified Zapier Zap will be triggered when the action (e.g. "Update") is taken against an object of that type (e.g. Users).
 
