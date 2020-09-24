@@ -4,7 +4,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 
 ## Index
 
-- [Zapier integrations](#available-integrations)
+- [Zapier integrations](#zapier-integrations)
 - [Installation](#installing-the-packages-in-xperience)
     - [Using without installing](#using-the-integration-without-nuget-packages)
 - [Xperience integrations](#xperience-integrations)
