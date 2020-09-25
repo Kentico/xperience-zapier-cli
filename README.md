@@ -44,7 +44,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 
 ## Xperience integrations
 
-After installing the NuGet packages in the Xperience application, you can find a new __Zapier__ module under the __Configuration__ menu. Here, you can create new "webhooks" by selecting an object type and action. The specified Zapier Zap will be triggered when the action (e.g. "Update") is taken against an object of that type (e.g. Users).
+After installing the NuGet packages in the Xperience application, you can find a new __Zapier__ module under the __Configuration__ menu. This will list the created webhooks and allow you to fine-tune or disable them if necessary. You _do not_ need to create webhooks in Xperience unless you are setting them up manually- Zapier will create them automatically!
 
 The import package provided by the NuGet packages also contains a custom [workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps) and custom [marketing automation](https://docs.kentico.com/k12sp/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions) action to trigger Zaps.
 
