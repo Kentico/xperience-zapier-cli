@@ -7,7 +7,19 @@ const eventTypes = {
 };
 
 const performHook = async (z, bundle) => {
-    return [bundle.cleanedRequest];
+    // Due to Zapier validation, all datetime fields need to be converted into ISO-8601
+    const data = bundle.cleanedRequest;
+    for(const key in data) {
+        const value = data[key];
+        const date = new Date(value);
+        if(!isNaN(date)) {
+
+            // Value is a date
+            data[key] = date.toISOString();
+        }
+    }
+
+    return [data];
 }
 
 const performSubscribe = async (z, bundle) => {
@@ -70,9 +82,41 @@ const getFallbackData = async (z, bundle) => {
     const response = await z.request(options);
     const json = z.JSON.parse(response.content);
     const values = Object.values(json)[0][0];
+    const object = Object.values(values)[0][0];
 
-    return [Object.values(values)[0][0]];
+    if(!object) return [sampleUser];
+
+    return [object];
 }
+
+const sampleUser = {
+    'UserEnabled': false,
+    'UserSecurityStamp': null,
+    'UserName': 'jimcarrey',
+    'UserGUID': '60c61d8e-308b-4ac3-8120-b9c722305883',
+    'UserStartingAliasPath': '/Blogs',
+    'LastName': 'Carrey',
+    'UserCreated': '2020-09-16T13:27:02-0500',
+    'UserMFRequired': false,
+    'FullName': 'Jim Carrey',
+    'PreferredUICultureCode': null,
+    'UserHasAllowedCultures': null,
+    'UserIsDomain': false,
+    'Email': 'jcarrey@imdb.com',
+    'UserLastLogonInfo': '',
+    'LastLogon': '2020-09-24T17:25:35-0500',
+    'UserLastModified': '2020-09-24T13:27:02-0500',
+    'FirstName': 'Jim',
+    'UserMFTimestep': null,
+    'UserPrivilegeLevel': 3,
+    'PreferredCultureCode': 'en-US',
+    'MiddleName': null,
+    'UserPasswordFormat': 'PBKDF2',
+    'UserPassword': '',
+    'UserIsExternal': false,
+    'UserID': 66,
+    'UserIsHidden': null
+};
 
 module.exports = {
     key: 'catch_xperience_webhook',
@@ -87,7 +131,7 @@ module.exports = {
         inputFields: [
             {
                 label: 'Webhook name',
-                helpText: 'Enter a webhook name which will appear in the Kentico Xperience admin UI.',
+                helpText: 'Enter a webhook name which will appear in the Kentico Xperience admin UI. This cannot contain spaces!',
                 key: 'name',
                 type: 'string',
                 required: true
@@ -102,33 +146,6 @@ module.exports = {
         performSubscribe: performSubscribe,
         performUnsubscribe: performUnsubscribe,
         performList: getFallbackData,
-        sample: {
-            'UserEnabled': false,
-            'UserSecurityStamp': null,
-            'UserName': 'jimcarrey',
-            'UserGUID': '60c61d8e-308b-4ac3-8120-b9c722305883',
-            'UserStartingAliasPath': '/Blogs',
-            'LastName': 'Carrey',
-            'UserCreated': '2020-09-16T13:27:02.6487445-04:00',
-            'UserMFRequired': false,
-            'FullName': 'Jim Carrey',
-            'PreferredUICultureCode': null,
-            'UserHasAllowedCultures': null,
-            'UserIsDomain': false,
-            'Email': 'jcarrey@imdb.com',
-            'UserLastLogonInfo': '',
-            'LastLogon': '2020-09-24T17:25:35-04:00',
-            'UserLastModified': '2020-09-24T13:27:02.658744-04:00',
-            'FirstName': 'Jim',
-            'UserMFTimestep': null,
-            'UserPrivilegeLevel': 3,
-            'PreferredCultureCode': 'en-US',
-            'MiddleName': null,
-            'UserPasswordFormat': 'PBKDF2',
-            'UserPassword': '',
-            'UserIsExternal': false,
-            'UserID': 66,
-            'UserIsHidden': null
-        }
+        sample: sampleUser
     },
 };

@@ -24,7 +24,13 @@ const createObjectAction = {
             async function (z, bundle) {
                 return await getObjectColumnsField(z, bundle, bundle.inputData.objectType);
             }
-        ]
+        ],
+        sample: {
+            CMS_User: {
+                UserID: 42,
+                UserGUID: "bdf0eb12-9841-4162-b22d-fb8eb9379201"
+            }
+        }
     },
 };
 

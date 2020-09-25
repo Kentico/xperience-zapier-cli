@@ -1,9 +1,9 @@
 {
   "name": "xperience-zapier-cli",
-  "version": "0.1.0",
-  "description": "An app for Kentico Xperience DXP.",
+  "version": "0.1.1",
+  "description": "Kentico Xperience is a digital experience platform for managing content, contacts, e-commerce and much more.",
   "repository": "https://github.com/kentico-ericd/xperience-zapier-cli",
-  "homepage": "https://xperience.io/",
+  "homepage": "https://kentico.com",
   "author": "Eric Dugre <ericd@kentico.com>",
   "main": "index.js",
   "scripts": {
