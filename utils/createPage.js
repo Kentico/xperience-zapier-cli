@@ -25,8 +25,11 @@ async function createPage(z, bundle) {
 
     const options = {
         url: `${bundle.authData.website}/rest/content/currentsite`
-            + `/${input.DocumentCulture}/document${parentPath}?format=json`,
+            + `/${input.DocumentCulture}/document${parentPath}`,
         method: 'POST',
+        params: {
+            format: 'json'
+        },
         headers: {
             'Accept': 'application/json'
         },
