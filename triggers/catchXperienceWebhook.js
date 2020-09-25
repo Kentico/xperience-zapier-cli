@@ -16,7 +16,8 @@ const performSubscribe = async (z, bundle) => {
         'WebhookName': bundle.inputData.name,
         'WebhookEnabled': true,
         'WebhookObjectType': bundle.inputData.objectType,
-        'WebhookURL': bundle.targetUrl
+        'WebhookURL': bundle.targetUrl,
+        'WebhookCreatedManually': false
     };
     const options = {
         url: `${bundle.authData.website}/rest/zapier.webhook/currentsite`,
