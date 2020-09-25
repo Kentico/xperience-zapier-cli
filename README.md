@@ -56,28 +56,20 @@ The import package provided by the NuGet packages also contains a custom [workfl
 
 3. Create a new Zap on http://zapier.com which should fire when an action occurs in Kentico
 
-4. In __step 1__ of the Zap, use the __Kentico Xperience__ app and the __Catch Xperience Webhook__ event.  
-The Webhooks by Zapier app and the Catch Hook event works as well, but requires a Zapier Premium account
+4. In __step 1__ of the Zap, use the __Kentico Xperience__ app and the __Catch Xperience Webhook__ event
 
 ![selectapp](/assets/selectapp.png)
 
 5. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
 
-> :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible. Be sure to add the ngrok URL to your site's __Domain Aliases__
+> :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible.
 
-6. Once you have authenticated, copy the __Webhook URL__
+6. After authenticating, select the object type and action that should trigger this Zap. Create a name for the webhook that will appear in the Xperience administration, following Xperience's code name conventions:
 
-![zapurl](/assets/zapurl.png)
+![triggerconfig](/assets/triggerconfig.png)
 
-7. In the Xperience administration, create a new webhook in the __Zapier__ application. Choose a name which describes what the webhook accomplishes, and choose an object type and event that will trigger the webhook.  
-Copy the __Webhook URL__ from step 5 into the Zapier Url field
+7. On the next step, click __Test trigger__ button. You should shortly see _“We found a request!”_ with sample data from your Xperience project for the selected object type.
 
-![newwebhook](/assets/newwebhook.png)
+8. Set up the rest of your Zap actions. For testing purposes, you could just use a __Code by Zapier__ action with the default configuration
 
-8. Save the webhook. You should see a `REGISTER` event in the __Event log__ if successful
-
-9. To test the webhook, perform the action that you specified. In the above example, you can go to the __Users__ application, edit a user, and click __Save__
-
-10. After performing the action, click the __Test trigger__ button on the Zap in Zapier. You should shortly see “We found a request!” with the data sent from Xperience
-
-![testtrigger](/assets/testtrigger.png)
+9. __Turn on__ the Zap! When the Zap is turned on, the webhook is automatically created in your Xperience project and you can go to the __Zapier__ application to view it. Perform the action that triggers the Zap, then check __Task history__ in Zapier to see the results
