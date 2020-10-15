@@ -70,7 +70,7 @@ The import package provided by the NuGet packages also contains a custom [workfl
 
 5. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
 
-> :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible. Use the `-host-header` parameter with your site's domain to avoid licensing errors: `ngrok http -host-header=myawesomesite.com 80`
+> :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible.
 
 6. After authenticating, select the object type and action that should trigger this Zap. Create a name for the webhook that will appear in the Xperience administration, following Xperience's code name conventions:
 
