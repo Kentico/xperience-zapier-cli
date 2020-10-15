@@ -7,6 +7,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 - [Zapier integrations](#zapier-integrations)
 - [Installation](#installing-the-packages-in-xperience)
     - [Using without installing](#using-the-integration-without-nuget-packages)
+- [Enabling REST](#enabling-rest)
 - [Xperience integrations](#xperience-integrations)
 - [Creating a webhook](#creating-a-webhook)
 
@@ -31,6 +32,13 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 2. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
 
 3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common__ package in the MVC project
+
+## Enabling REST
+
+The native Zapier application uses Xperience's REST endpoint to authenticate requests and obtain data from your site. REST must be enabled and configured properly to use the [Zapier integrations](#zapier-integrations), regardless of whether you are using the NuGet packages or not.
+
+[Follow our instructions](https://docs.xperience.io/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) for enabling the REST service, including all server configuration, Xperience settings, and the `runAllManagedModulesForAllRequests` attribute. Consider also enabling the __Allow sensitive fields for administrators__ setting if you'd like to get/set sensitive fields (e.g. _UserPassword_).
+
 
 ## Using the integration without NuGet packages
 
