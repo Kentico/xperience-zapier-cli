@@ -14,6 +14,8 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 
 ## Zapier integrations
 
+You can read more about the native Zapier integration here: https://zapier.com/apps/kentico-xperience/integrations.
+
 ### Triggers
 
 - __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience CMS/MVC application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
@@ -58,26 +60,22 @@ The import package provided by the NuGet packages also contains a custom [workfl
 
 ## Creating a webhook
 
-1. Use [this link](https://zapier.com/developer/public-invite/116683/ea4735596915584316f39c38181796d1/) to gain access to the private Kentico Xperience Zapier application
+1. Create a new Zap on http://zapier.com which should fire when an action occurs in Kentico
 
-2. [Enable the REST service](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) in Xperience
-
-3. Create a new Zap on http://zapier.com which should fire when an action occurs in Kentico
-
-4. In __step 1__ of the Zap, use the __Kentico Xperience__ app and the __Catch Xperience Webhook__ event
+2. In __step 1__ of the Zap, use the __Kentico Xperience__ app and the __Catch Xperience Webhook__ event
 
 ![selectapp](/assets/selectapp.png)
 
-5. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
+3. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
 
 > :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible.
 
-6. After authenticating, select the object type and action that should trigger this Zap. Create a name for the webhook that will appear in the Xperience administration, following Xperience's code name conventions:
+4. After authenticating, select the object type and action that should trigger this Zap. Create a name for the webhook that will appear in the Xperience administration, following Xperience's code name conventions:
 
 ![triggerconfig](/assets/triggerconfig.png)
 
-7. On the next step, click __Test trigger__ button. You should shortly see _“We found a request!”_ with sample data from your Xperience project for the selected object type.
+5. On the next step, click __Test trigger__ button. You should shortly see _“We found a request!”_ with sample data from your Xperience project for the selected object type.
 
-8. Set up the rest of your Zap actions. For testing purposes, you could just use a __Code by Zapier__ action with the default configuration
+6. Set up the rest of your Zap actions. For testing purposes, you could just use a __Code by Zapier__ action with the default configuration
 
-9. __Turn on__ the Zap! When the Zap is turned on, the webhook is automatically created in your Xperience project and you can go to the __Zapier__ application to view it. Perform the action that triggers the Zap, then check __Task history__ in Zapier to see the results
+7. __Turn on__ the Zap! When the Zap is turned on, the webhook is automatically created in your Xperience project and you can go to the __Zapier__ application to view it. Perform the action that triggers the Zap, then check __Task history__ in Zapier to see the results
