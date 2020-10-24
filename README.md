@@ -18,7 +18,7 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
 ### Triggers
 
-- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience CMS/MVC application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
+- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience Portal Engine/.NET Core application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
 
 ### Actions
 
