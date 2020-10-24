@@ -1,6 +1,6 @@
 # xperience-zapier-cli
 
-A native Zapier application to integrate Xperience 13 websites with Zapier and thousands of its available applications.
+A native Zapier application to integrate Xperience 13 websites with Zapier and thousands of its available applications. This integration allows you to create Zaps which trigger when actions are taken in your Xperience application, and does not require a paid Zapier account.
 
 ## Index
 
