@@ -1,6 +1,6 @@
 # xperience-zapier-cli
 
-A native Zapier application to integrate Xperience 13 websites with Zapier and thousands of its available applications.
+A native Zapier application to integrate Xperience 13 websites with Zapier and thousands of its available applications. This integration allows you to create Zaps which trigger when actions are taken in your Xperience application, and does not require a paid Zapier account.
 
 ## Index
 
@@ -18,7 +18,7 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
 ### Triggers
 
-- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience CMS/MVC application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
+- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience Portal Engine/.NET Core application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
 
 ### Actions
 
