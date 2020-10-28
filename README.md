@@ -79,3 +79,34 @@ The import package provided by the NuGet packages also contains a custom [workfl
 6. Set up the rest of your Zap actions. For testing purposes, you could just use a __Code by Zapier__ action with the default configuration
 
 7. __Turn on__ the Zap! When the Zap is turned on, the webhook is automatically created in your Xperience project and you can go to the __Zapier__ application to view it. Perform the action that triggers the Zap, then check __Task history__ in Zapier to see the results
+
+## Example - Synchronizing Google Calendar events with Xperience
+
+### Xperience setup
+
+1. Create a page type for displaying events in your Xperience site
+
+![eventtype](/assets/eventtype.png)
+
+2. On the __Allowed types__ tab, set the __Allowed parent page types__ to `CMS.Folder` (or any other page type you want to create events under)
+
+3. Add the parent page to the content tree
+
+![parentpage](/assets/parentpage.png)
+
+### Zapier setup
+
+1. Create a new Zap using the __Google Calendar__ app and __New Event__ trigger. Connect to your Google account and choose the calendar you wish to synchronize
+
+![calendartrigger](/assets/calendartrigger.png)
+
+2. In the next step, choose the __Kentico Xperience__ app and __Create New Page__ action
+
+![xperienceaction](/assets/xperienceaction.png)
+
+3. In the __Customize Create New Page__ menu, use the drop-downs to select the dynamic fields from the trigger. For example, for the page type's _StartDate_ field, choose _Event Begins_ from the trigger.  
+Make sure to set the __Parent Page__ path to the page created in step 3 of the Xperience setup
+
+![customfields](/assets/customfields.png)
+
+4. Turn on the Zap! When you create a new event in Google Calendar, you should see a new page in the Xperience content tree. You could also create another Zap using the __Event Cancelled__ trigger in Google Calendar, to delete the page in Xperience when the event is deleted.
