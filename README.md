@@ -10,6 +10,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 - [Enabling REST](#enabling-rest)
 - [Xperience integrations](#xperience-integrations)
 - [Creating a webhook](#creating-a-webhook)
+- [Example](#example---synchronizing-google-calendar-events-with-xperience)
 
 
 ## Zapier integrations
@@ -105,7 +106,7 @@ The import package provided by the NuGet packages also contains a custom [workfl
 ![xperienceaction](/assets/xperienceaction.png)
 
 3. In the __Customize Create New Page__ menu, use the drop-downs to select the dynamic fields from the trigger. For example, for the page type's _StartDate_ field, choose _Event Begins_ from the trigger.  
-Make sure to set the __Parent Page__ path to the page created in step 3 of the Xperience setup
+Make sure to set the __Parent Page__ path to the page created in step 3 of the [Xperience setup](#xperience-setup)
 
 ![customfields](/assets/customfields.png)
 
