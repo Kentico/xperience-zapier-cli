@@ -10,8 +10,7 @@ A native Zapier application to integrate Xperience 13 websites with Zapier and t
 - [Enabling REST](#enabling-rest)
 - [Xperience integrations](#xperience-integrations)
 - [Creating a webhook](#creating-a-webhook)
-- [Example](#example---synchronizing-google-calendar-events-with-xperience)
-
+- [Example - Synchronizing Google Calender](#example---synchronizing-google-calendar-events-with-xperience)
 
 ## Zapier integrations
 
@@ -57,7 +56,7 @@ The native Zapier application uses Xperience's REST endpoint to authenticate req
 
 After installing the NuGet packages in the Xperience application, you can find a new __Zapier__ module under the __Configuration__ menu. This will list the created webhooks and allow you to fine-tune or disable them if necessary. You _do not_ need to create webhooks in Xperience unless you are setting them up manually- Zapier will create them automatically!
 
-The import package provided by the NuGet packages also contains a custom [workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps) and custom [marketing automation](https://docs.kentico.com/k12sp/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions) action to trigger Zaps.
+The import package provided by the NuGet packages also contains a custom [workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps) and custom [marketing automation](https://docs.kentico.com/k12sp/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions) action to trigger Zaps. If you'd like to use these, import the _/App_Data/CMSModules/Xperience.Zapier/Xperience.Zapier.zip_ package from the __Sites application__: [Importing a site or objects](https://docs.xperience.io/deploying-websites/exporting-and-importing-sites/importing-a-site-or-objects).
 
 ## Creating a webhook
 

@@ -20,9 +20,6 @@ async function createPage(z, bundle) {
     // Add the NodeClassID input
     input.NodeClassID = classID;
 
-    z.console.log(bundle.inputData);
-    z.console.log(input);
-
     const options = {
         url: `${bundle.authData.website}/rest/content/currentsite`
             + `/${input.DocumentCulture}/document${parentPath}`,

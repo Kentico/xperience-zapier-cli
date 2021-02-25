@@ -9,14 +9,6 @@ const sections = {
             'DocumentCulture'
         ],
     },
-    template: {
-        description: 'Page template settings',
-        columns: [
-            'DocumentPageTemplateID',
-            'NodeTemplateForAllCultures',
-            'NodeInheritPageTemplate'
-        ]
-    },
     security: {
         description: 'Node security',
         columns: [
@@ -80,7 +72,6 @@ async function getPageColumnsField(z, bundle, classID) {
             label: 'Parent page',
             helpText: 'The path of the page to insert this page under. For example, "/Blogs/Food"'
         },
-        ...getSection(commonSchema, 'template'),
         ...getSection(commonSchema, 'security'),
         {
             key: 'custom_fields',
