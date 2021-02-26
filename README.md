@@ -22,8 +22,9 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
 ### Actions
 
-- __Create New Object__: Creates a new object of selected type in your Xperience application, assigned to the website specified when authenticating the Zapier integration.
-- __Create New Page__: Creates a new page in the content tree of the selected page type, on the website specified when authenticating the Zapier integration.
+- __Create New Object__: Creates a new object of selected type in your Xperience application.
+- __Create New Page__: Creates a new page in the content tree of the selected page type.
+- __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath.
 
 ## Installing the packages in Xperience
 

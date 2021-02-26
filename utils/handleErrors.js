@@ -9,7 +9,9 @@ function handleErrors(response, z, bundle) {
                 'AuthenticationError',
                 response.status
                 );
-            break;
+        case 404:
+            response.skipThrowForStatus = true;
+            return response;
         default: 
             throw new z.errors.Error(
                 `Response status ${response.status}. Please check the Xperience Event Log`,
