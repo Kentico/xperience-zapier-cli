@@ -23,8 +23,8 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 ### Actions
 
 - __Create New Object__: Creates a new object of selected type in your Xperience application.
-- __Create New Page__: Creates a new page in the content tree of the selected page type.
-- __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath.
+- __Create New Page__: Creates a new page in the content tree of the selected page type. See [an example](#zapier-setup) for details.
+- __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath. See [Updating pages](#updating-pages).
 
 ## Installing the packages in Xperience
 
@@ -80,6 +80,14 @@ The import package provided by the NuGet packages also contains a custom [workfl
 6. Set up the rest of your Zap actions. For testing purposes, you could just use a __Code by Zapier__ action with the default configuration
 
 7. __Turn on__ the Zap! When the Zap is turned on, the webhook is automatically created in your Xperience project and you can go to the __Zapier__ application to view it. Perform the action that triggers the Zap, then check __Task history__ in Zapier to see the results
+
+## Updating pages
+
+With the __Update Page__ action, you can update standard page fields and custom fields of existing pages in your content tree. You only need to supply the NodeAliasPath of the page and (optionally) the culture version to update.
+
+![update page](/assets/updatepage.png)
+
+The format of the JSON is the same as described in our [REST documentation](https://docs.xperience.io/integrating-3rd-party-systems/xperience-rest-service/manipulating-data-using-rest/managing-pages-using-rest#ManagingpagesusingREST-Updatingexistingpages). You can update as many or as few fields as you'd like- existing data not included in the JSON body are not modified.
 
 ## Example - Synchronizing Google Calendar events with Xperience
 
