@@ -1,14 +1,15 @@
 /**
  * Gets all columns and values for a page from the /rest/content endpoint
  */
-async function getPageData(z, bundle, nodeAliasPath, culture) {
+async function getPageData(z, bundle) {
     let retVal = {};
-    if(!nodeAliasPath) return retVal;
+    let culture = bundle.inputData.culture;
+    if(!bundle.inputData.nodeAliasPath) return retVal;
     if(!culture) culture = 'en-US';
-
+    
     const options = {
         url: `${bundle.authData.website}/rest/content/currentsite`
-            + `/${culture}/document${nodeAliasPath}`,
+            + `/${culture}/document${bundle.inputData.nodeAliasPath}`,
         method: 'GET',
         params: {
             localize: 'en-US',

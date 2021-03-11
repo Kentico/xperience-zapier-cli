@@ -1,9 +1,6 @@
-const getPageData = require('../utils/getPageData');
-const getPageColumnsField = require('../fields/getPageColumnsField');
 const updatePage = require('../utils/updatePage');
 
 async function execute(z, bundle) {
-
     const result = await updatePage(z, bundle);
     return result;
 }
@@ -25,22 +22,29 @@ const updatePageAction = {
                 type: 'string',
                 required: true,
                 label: 'Node alias path',
-                helpText: 'The path of the page to update. For example, "/Blogs/Food"',
-                altersDynamicFields: true
+                helpText: 'The path of the page to update. For example, "/Blogs/Food"'
             },
             {
                 key: 'culture',
                 type: 'string',
                 label: 'Document culture',
-                helpText: 'The culture code of the page to update. Defaults to "en-US" if emtpy.',
-                altersDynamicFields: true
+                helpText: 'The culture code of the page to update. Defaults to "en-US" if emtpy.'
             },
-            async function (z, bundle) {
-                const pageData = await getPageData(z, bundle, bundle.inputData.nodeAliasPath, bundle.inputData.culture);
-                if(!pageData) throw new z.errors.HaltedError(`Page not found. Please check the Node Alias Path and Culture.` );
-                else return await getPageColumnsField(z, bundle, pageData["NodeClassID"], pageData);
+            {
+                key: 'updateValues',
+                label: 'Data to update',
+                placeholder: `{
+    DocumentName: "The best article ever",
+    ArticleSummary: "A very good article"
+}`,
+                type: 'text',
+                helpText: 'JSON representing the page fields/values that you want to update.'
             }
         ],
+        sample: {
+            NodeAliasPath: '/Articles/Coffee-Beverages-Explained',
+            ArticleTitle: 'Coffee Beverages Explained'
+        },
         outputFields: [],
     },
 };

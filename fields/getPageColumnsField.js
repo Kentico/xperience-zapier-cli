@@ -58,9 +58,9 @@ function getSimpleFieldWithInput(z, field, input) {
  * of each field will be set to the corresponding key in the input.
  * 
  */
-async function getPageColumnsField(z, bundle, classID, input = null) {
+async function getPageColumnsField(z, bundle, input = null) {
     
-    let classSchema = await getClassSchema(z, bundle, classID);
+    let classSchema = await getClassSchema(z, bundle, bundle.inputData.classID);
     const commonSchema = await getCommonPageSchema(z, bundle);
 
     // Sort custom page fields by columnn name

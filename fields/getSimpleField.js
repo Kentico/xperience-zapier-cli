@@ -6,7 +6,7 @@ function getSimpleField(field) {
                 '('+field.fieldcaption+')' : '')}`,
             required: !field.allowempty,
             helpText: field.fielddescription || field.explanationtext,
-            default: field.defaultvalue || ''
+            default: field.defaultvalue && typeof field.defaultvalue === 'string' ? field.defaultvalue : ''
         };
 
         // Add extras

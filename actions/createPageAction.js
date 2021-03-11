@@ -22,7 +22,7 @@ const createPageAction = {
         inputFields: [
             getPageTypesField({ required: true, altersDynamicFields: true }),
             async function (z, bundle) {
-                return await getPageColumnsField(z, bundle, bundle.inputData.classID);
+                return await getPageColumnsField(z, bundle);
             }
         ],
         sample: {

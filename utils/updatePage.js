@@ -1,13 +1,10 @@
 async function updatePage(z, bundle) {
-    const data = bundle.inputData;
-    const nodeAliasPath = bundle.inputData.nodeAliasPath;
-
-    // Remove nodeAliasPath from data so only page columns exist
-    delete data.nodeAliasPath;
+    let culture = bundle.inputData.culture;
+    if(!culture) culture = 'en-US';
 
     const options = {
         url: `${bundle.authData.website}/rest/content/currentsite`
-            + `/${data.DocumentCulture}/document${nodeAliasPath}`,
+            + `/${culture}/document${bundle.inputData.nodeAliasPath}`,
         method: 'PUT',
         params: {
             format: 'json'
@@ -15,7 +12,7 @@ async function updatePage(z, bundle) {
         headers: {
             'Accept': 'application/json'
         },
-        body: data
+        body: bundle.inputData.updateValues
     };
 
     const response = await z.request(options);

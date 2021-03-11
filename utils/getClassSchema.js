@@ -69,7 +69,9 @@ async function getClassSchema(z, bundle, identifier) {
         
             // Map each field's XML definition to an object
             const fields = json.form.field;
-            retVal = fields.map(makeField);
+            if(fields && fields.length > 0) {
+                retVal = fields.map(makeField);
+            }
         });
     
         if(foundClass.ClassIsDocumentType && foundClass.ClassNodeNameSource) {
