@@ -11,7 +11,7 @@ const updateObjectAction = {
     noun: "Update Object",
     display: {
         hidden: false,
-        important: true,
+        important: false,
         description: "Updates an object in Xperience",
         label: "Update Object"
     },
