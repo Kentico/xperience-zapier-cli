@@ -23,8 +23,9 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 ### Actions
 
 - __Create New Object__: Creates a new object of selected type in your Xperience application.
-- __Create New Page__: Creates a new page in the content tree of the selected page type. See [an example](#zapier-setup) for details.
+- __Create New Page__: Creates a new page in the content tree of the selected page type. See [the example](#zapier-setup) for details.
 - __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath. See [Updating pages](#updating-pages).
+- __Update Object__: Updates an existing site or global object. See [Updating objects](#updating-objects).
 
 ## Installing the packages in Xperience
 
@@ -88,6 +89,12 @@ With the __Update Page__ action, you can update standard page fields and custom 
 ![update page](/assets/updatepage.png)
 
 The format of the JSON is the same as described in our [REST documentation](https://docs.xperience.io/integrating-3rd-party-systems/xperience-rest-service/manipulating-data-using-rest/managing-pages-using-rest#ManagingpagesusingREST-Updatingexistingpages). You can update as many or as few fields as you'd like- existing data not included in the JSON body are not modified.
+
+## Updating objects
+
+Using the __Update Object__ action, you can update an existing site or global object. For example, settings keys can apply globally to all sites, but each site can also have its own key value. To update a site's custom settings key, you could follow this example:
+
+![updateobject](/assets/updateobject.png)
 
 ## Example - Synchronizing Google Calendar events with Xperience
 

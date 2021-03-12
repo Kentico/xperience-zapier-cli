@@ -9,6 +9,7 @@ const getPageTypes = require('./triggers/dropdowns/getPageTypes');
 const createObjectAction = require('./actions/createObjectAction');
 const createPageAction = require('./actions/createPageAction');
 const updatePageAction = require('./actions/updatePageAction');
+const updateObjectAction = require('./actions/updateObjectAction');
 
 module.exports = {
   version: require('./package.json').version,
@@ -30,7 +31,8 @@ module.exports = {
   creates: {
     [createObjectAction.key]: createObjectAction,
     [createPageAction.key]: createPageAction,
-    [updatePageAction.key]: updatePageAction
+    [updatePageAction.key]: updatePageAction,
+    [updateObjectAction.key]: updateObjectAction
   },
 
   resources: {},

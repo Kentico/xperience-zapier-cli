@@ -34,8 +34,8 @@ const updatePageAction = {
                 key: 'updateValues',
                 label: 'Data to update',
                 placeholder: `{
-    DocumentName: "The best article ever",
-    ArticleSummary: "A very good article"
+    "DocumentName": "The best article ever",
+    "ArticleSummary": "A very good article"
 }`,
                 type: 'text',
                 helpText: 'JSON representing the page fields/values that you want to update.'
