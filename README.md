@@ -126,3 +126,15 @@ Make sure to set the __Parent Page__ path to the page created in step 3 of the [
 ![customfields](/assets/customfields.png)
 
 4. Turn on the Zap! When you create a new event in Google Calendar, you should see a new page in the Xperience content tree. You could also create another Zap using the __Event Cancelled__ trigger in Google Calendar, to delete the page in Xperience when the event is deleted.
+
+## Compatibility
+
+The Zapier integration represented by this repository should work with all versions of Kentico Xperience, but has only been tested with Kentico Xperience 13 websites.
+
+## Feedback & Contributing
+
+Check out the [contributing](https://github.com/kentico-ericd/xperience-core-events/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
+
+## License
+
+The repository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
