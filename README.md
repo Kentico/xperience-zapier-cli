@@ -2,16 +2,6 @@
 
 A native Zapier application to integrate Xperience 13 websites with Zapier and thousands of its available applications. This integration allows you to create Zaps which trigger when actions are taken in your Xperience application, and does not require a paid Zapier account.
 
-## Index
-
-- [Zapier integrations](#zapier-integrations)
-- [Installation](#installing-the-packages-in-xperience)
-    - [Using without installing](#using-the-integration-without-nuget-packages)
-- [Enabling REST](#enabling-rest)
-- [Xperience integrations](#xperience-integrations)
-- [Creating a webhook](#creating-a-webhook)
-- [Example - Synchronizing Google Calender](#example---synchronizing-google-calendar-events-with-xperience)
-
 ## Zapier integrations
 
 You can read more about the native Zapier integration here: https://zapier.com/apps/kentico-xperience/integrations.
@@ -27,24 +17,22 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 - __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath. See [Updating pages](#updating-pages).
 - __Update Object__: Updates an existing site or global object. See [Updating objects](#updating-objects).
 
-## Installing the packages in Xperience
+## Installing the custom module
 
-> :gear: These NuGet packages make it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified. However, if you'd like to use the Zapier application without installing the NuGet packages, skip to [Using the integration without NuGet packages](#using-the-integration-without-nuget-packages)
+> :gear: __Optional!__
 
-1. In your Xperience administration project, open the NuGet Package Manager and install the __Xperience.Zapier__ and __Xperience.Zapier.Common__ packages
+ This custom module makes it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified in the CMS. However, if you'd like to use the Zapier integration without installing the custom module, skip to [Using the integration without the custom module](#using-the-integration-without-the-custom-module).
 
-2. After installation, go to the __Sites application__ and import the package located at _~\CMS\App_Data\CMSModules\Xperience.Zapier\Xperience.Zapier.zip_
-
-3. If you are using the MVC development model and would like to trigger Zaps when object events are fired from the MVC project, install the __Xperience.Zapier.Common__ package in the MVC project
+To install and use the custom module, follow the [instructions in that repository](https://github.com/kentico-ericd/xperience-zapier#installing). 
 
 ## Enabling REST
 
-The native Zapier application uses Xperience's REST endpoint to authenticate requests and obtain data from your site. REST must be enabled and configured properly to use the [Zapier integrations](#zapier-integrations), regardless of whether you are using the NuGet packages or not.
+The native Zapier application uses Xperience's REST endpoint to authenticate requests and obtain data from your site. REST must be enabled and configured properly to use the [Zapier integrations](#zapier-integrations), regardless of whether you are using the custom module or not.
 
 [Follow our instructions](https://docs.xperience.io/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) for enabling the REST service, including all server configuration, Xperience settings, and the `runAllManagedModulesForAllRequests` attribute. Consider also enabling the __Allow sensitive fields for administrators__ setting if you'd like to get/set sensitive fields (e.g. _UserPassword_).
 
 
-## Using the integration without NuGet packages
+## Using the integration without the custom module
 
 1. Create a new Zap on http://zapier.com using the __Webhooks by Zapier__ app and the __Catch hook__ action
 
@@ -54,13 +42,9 @@ The native Zapier application uses Xperience's REST endpoint to authenticate req
 
 1. In your code, use [`HttpClient`](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1) to send a POST request to the __Custom Webhook URL__ with a body that contains the information you need in the Zap
 
-## Xperience integrations
-
-After installing the NuGet packages in the Xperience application, you can find a new __Zapier__ module under the __Configuration__ menu. This will list the created webhooks and allow you to fine-tune or disable them if necessary. You _do not_ need to create webhooks in Xperience unless you are setting them up manually- Zapier will create them automatically!
-
-The import package provided by the NuGet packages also contains a custom [workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps) and custom [marketing automation](https://docs.kentico.com/k12sp/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions) action to trigger Zaps. If you'd like to use these, import the _/App_Data/CMSModules/Xperience.Zapier/Xperience.Zapier.zip_ package from the __Sites application__: [Importing a site or objects](https://docs.xperience.io/deploying-websites/exporting-and-importing-sites/importing-a-site-or-objects).
-
 ## Creating a webhook
+
+> :warning: These steps assume you have installed the custom module
 
 1. Create a new Zap on http://zapier.com which should fire when an action occurs in Kentico
 
@@ -129,7 +113,7 @@ Make sure to set the __Parent Page__ path to the page created in step 3 of the [
 
 ## Compatibility
 
-The Zapier integration represented by this repository should work with all versions of Kentico Xperience, but has only been tested with Kentico Xperience 13 websites.
+The Zapier integration represented by this repository should work with all versions of Kentico Xperience (custom module excluded), but has only been tested with Kentico Xperience 13 websites.
 
 ## Feedback & Contributing
 
