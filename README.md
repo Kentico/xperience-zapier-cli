@@ -8,7 +8,7 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
 ### Triggers
 
-- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience Portal Engine/.NET Core application. Requires the [NuGet packages](#installing-the-packages-in-xperience) to be installed on the project.
+- __Catch Xperience Webhook__: Triggers when a POST request is sent from your Xperience Portal Engine/.NET Core application. Requires the [custom module](#installing-the-custom-module) to be installed on the project.
 
 ### Actions
 
@@ -21,9 +21,9 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
 > :gear: __Optional!__
 
- This custom module makes it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified in the CMS. However, if you'd like to use the Zapier integration without installing the custom module, skip to [Using the integration without the custom module](#using-the-integration-without-the-custom-module).
-
-To install and use the custom module, follow the [instructions in that repository](https://github.com/kentico-ericd/xperience-zapier#installing). 
+ This custom module makes it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified in the CMS. However, you can still use this integration's actions (like __Create New Page__) without installing the module.
+ 
+If you'd rather manage everything in Zapier, and you'd like to trigger Zaps without installing the custom module, skip to [Triggering Zaps without the custom module](#triggering-zaps-without-the-custom-module). To install and use the custom module, follow the [instructions in that repository](https://github.com/kentico-ericd/xperience-zapier#installing). 
 
 ## Enabling REST
 
@@ -32,7 +32,7 @@ The native Zapier application uses Xperience's REST endpoint to authenticate req
 [Follow our instructions](https://docs.xperience.io/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) for enabling the REST service, including all server configuration, Xperience settings, and the `runAllManagedModulesForAllRequests` attribute. Consider also enabling the __Allow sensitive fields for administrators__ setting if you'd like to get/set sensitive fields (e.g. _UserPassword_).
 
 
-## Using the integration without the custom module
+## Triggering Zaps without the custom module
 
 1. Create a new Zap on http://zapier.com using the __Webhooks by Zapier__ app and the __Catch hook__ action
 
