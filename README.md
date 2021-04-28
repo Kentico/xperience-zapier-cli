@@ -117,7 +117,7 @@ The Zapier integration represented by this repository should work with all versi
 
 ## Feedback & Contributing
 
-Check out the [contributing](https://github.com/kentico-ericd/xperience-core-events/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
+Check out the [contributing](https://github.com/kentico-ericd/xperience-zapier-cli/blob/master/CONTRIBUTING.md) page to see the best places to file issues, start discussions, and begin contributing.
 
 ## License
 
