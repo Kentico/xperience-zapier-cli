@@ -10,6 +10,8 @@ const createObjectAction = require('./actions/createObjectAction');
 const createPageAction = require('./actions/createPageAction');
 const updatePageAction = require('./actions/updatePageAction');
 const updateObjectAction = require('./actions/updateObjectAction');
+const findPageAction = require('./actions/findPage');
+const moveToNextStepAction = require('./actions/moveToNextStepAction');
 
 module.exports = {
   version: require('./package.json').version,
@@ -26,13 +28,16 @@ module.exports = {
     [getPageTypes.key]: getPageTypes
   },
 
-  searches: {},
+  searches: {
+    [findPageAction.key]: findPageAction
+  },
 
   creates: {
     [createObjectAction.key]: createObjectAction,
     [createPageAction.key]: createPageAction,
     [updatePageAction.key]: updatePageAction,
-    [updateObjectAction.key]: updateObjectAction
+    [updateObjectAction.key]: updateObjectAction,
+    [moveToNextStepAction.key]: moveToNextStepAction
   },
 
   resources: {},
