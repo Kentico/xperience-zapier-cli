@@ -1,19 +1,21 @@
+const zapierPackage = require('zapier-platform-core');
+const thisPackage = require('./package.json');
+const catchXperienceWebhook = require('./src/triggers/catchXperienceWebhook');
+const getObjectTypes = require('./src/triggers/dropdowns/getObjectTypes');
+const getPageTypes = require('./src/triggers/dropdowns/getPageTypes');
+const createObjectAction = require('./src/actions/createObjectAction');
+const createPageAction = require('./src/actions/createPageAction');
+const updatePageAction = require('./src/actions/updatePageAction');
+const updateObjectAction = require('./src/actions/updateObjectAction');
 const {
   config: authentication,
   befores = [],
   afters = [],
-} = require('./authentication');
-const catchXperienceWebhook = require('./triggers/catchXperienceWebhook');
-const getObjectTypes = require('./triggers/dropdowns/getObjectTypes');
-const getPageTypes = require('./triggers/dropdowns/getPageTypes');
-const createObjectAction = require('./actions/createObjectAction');
-const createPageAction = require('./actions/createPageAction');
-const updatePageAction = require('./actions/updatePageAction');
-const updateObjectAction = require('./actions/updateObjectAction');
+} = require('./src/authentication');
 
 module.exports = {
-  version: require('./package.json').version,
-  platformVersion: require('zapier-platform-core').version,
+  version: thisPackage.version,
+  platformVersion: zapierPackage.version,
 
   authentication,
   beforeRequest: [...befores],
@@ -23,7 +25,7 @@ module.exports = {
     [catchXperienceWebhook.key]: catchXperienceWebhook,
 
     [getObjectTypes.key]: getObjectTypes,
-    [getPageTypes.key]: getPageTypes
+    [getPageTypes.key]: getPageTypes,
   },
 
   searches: {},
@@ -32,7 +34,7 @@ module.exports = {
     [createObjectAction.key]: createObjectAction,
     [createPageAction.key]: createPageAction,
     [updatePageAction.key]: updatePageAction,
-    [updateObjectAction.key]: updateObjectAction
+    [updateObjectAction.key]: updateObjectAction,
   },
 
   resources: {},
