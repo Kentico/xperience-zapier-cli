@@ -1,11 +1,12 @@
 const handleErrors = require('./utils/handleErrors');
 
-const test = (z, bundle) => z.request({ url: `${bundle.authData.website}/rest` });
-
-const Authentication = {
+/**
+ * An object representing the authentication configuration for Zapier.
+ */
+module.exports = {
   config: {
     type: 'basic',
-    test,
+    test: (z, bundle) => z.request({ url: `${bundle.authData.website}/rest` }),
     fields: [
       {
         label: 'Website base URL',
@@ -20,5 +21,3 @@ const Authentication = {
   befores: [],
   afters: [handleErrors],
 };
-
-module.exports = Authentication;

@@ -1,11 +1,35 @@
-const updatePage = require('../utils/updatePage');
+const updatePage = require('../utils/update/updatePage');
 
-async function execute(z, bundle) {
-  const result = await updatePage(z, bundle);
-  return result;
-}
+const nodeAliasField = {
+  key: 'nodeAliasPath',
+  type: 'string',
+  required: true,
+  label: 'Node alias path',
+  helpText: 'The path of the page to update. For example, "/Blogs/Food"',
+};
+const cultureField = {
+  key: 'culture',
+  type: 'string',
+  label: 'Document culture',
+  helpText: 'The culture code of the page to update. Defaults to "en-US" if emtpy.',
+};
+const jsonInputField = {
+  key: 'updateValues',
+  label: 'Data to update',
+  placeholder: `{
+"DocumentName": "The best article ever",
+"ArticleSummary": "A very good article"
+}`,
+  type: 'text',
+  helpText: 'JSON representing the page fields/values that you want to update.',
+};
 
-const updatePageAction = {
+/**
+ * A Zapier action which presents a drop-down list to select an Xperience page type.
+ * The user then provide the path and culture of the page to update. The input accepts
+ * JSON which contains the columns to update and their values.
+ */
+module.exports = {
   noun: 'Update Page',
   display: {
     hidden: false,
@@ -15,31 +39,18 @@ const updatePageAction = {
   },
   key: 'update_page',
   operation: {
-    perform: execute,
+    perform: async (z, bundle) => updatePage(
+      z,
+      bundle,
+      bundle.inputData.culture,
+      bundle.inputData.nodeAliasPath,
+      bundle.inputData.objectType,
+      bundle.inputData.updateValues,
+    ),
     inputFields: [
-      {
-        key: 'nodeAliasPath',
-        type: 'string',
-        required: true,
-        label: 'Node alias path',
-        helpText: 'The path of the page to update. For example, "/Blogs/Food"',
-      },
-      {
-        key: 'culture',
-        type: 'string',
-        label: 'Document culture',
-        helpText: 'The culture code of the page to update. Defaults to "en-US" if emtpy.',
-      },
-      {
-        key: 'updateValues',
-        label: 'Data to update',
-        placeholder: `{
-    "DocumentName": "The best article ever",
-    "ArticleSummary": "A very good article"
-}`,
-        type: 'text',
-        helpText: 'JSON representing the page fields/values that you want to update.',
-      },
+      nodeAliasField,
+      cultureField,
+      jsonInputField,
     ],
     sample: {
       NodeAliasPath: '/Articles/Coffee-Beverages-Explained',
@@ -48,5 +59,3 @@ const updatePageAction = {
     outputFields: [],
   },
 };
-
-module.exports = updatePageAction;

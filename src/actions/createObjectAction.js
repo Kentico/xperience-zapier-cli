@@ -1,14 +1,12 @@
+const createObject = require('../utils/create/createObject');
 const getObjectTypesField = require('../fields/getObjectTypesField');
-const getObjectColumnsField = require('../fields/getObjectColumnsField');
-const createObject = require('../utils/createObject');
+const getObjectTypeFields = require('../fields/getObjectTypeFields');
 
-async function execute(z, bundle) {
-  const result = await createObject(z, bundle, bundle.inputData.objectType);
-
-  return result;
-}
-
-const createObjectAction = {
+/**
+ * A Zapier action which presents a drop-down list to select an Xperience object type,
+ * then dynamically displays that type's fields.
+ */
+module.exports = {
   noun: 'Create New Object',
   display: {
     hidden: false,
@@ -18,12 +16,15 @@ const createObjectAction = {
   },
   key: 'create_object',
   operation: {
-    perform: execute,
+    perform: async (z, bundle) => createObject(
+      z,
+      bundle,
+      bundle.inputData.objectType,
+      bundle.inputData,
+    ),
     inputFields: [
       getObjectTypesField({ required: true, altersDynamicFields: true }),
-      async function f(z, bundle) {
-        return getObjectColumnsField(z, bundle, bundle.inputData.objectType);
-      },
+      async (z, bundle) => getObjectTypeFields(z, bundle, bundle.inputData.objectType),
     ],
     sample: {
       CMS_User: {
@@ -33,5 +34,3 @@ const createObjectAction = {
     },
   },
 };
-
-module.exports = createObjectAction;

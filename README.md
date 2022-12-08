@@ -23,13 +23,13 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 
  This custom module makes it easy to manage webhooks in the Xperience interface, and automatically submit POSTs to Zapier when data is modified in the CMS. However, you can still use this integration's actions (like __Create New Page__) without installing the module.
  
-If you'd rather manage everything in Zapier, and you'd like to trigger Zaps without installing the custom module, skip to [Triggering Zaps without the custom module](#triggering-zaps-without-the-custom-module). To install and use the custom module, follow the [instructions in that repository](https://github.com/kentico-ericd/xperience-zapier#installing). 
+If you'd rather manage everything in Zapier, and you'd like to trigger Zaps without installing the custom module, skip to [Triggering Zaps without the custom module](#triggering-zaps-without-the-custom-module). To install and use the custom module, follow the [instructions in that repository](https://github.com/kentico/xperience-zapier#installing). 
 
 ## Enabling REST
 
 The native Zapier application uses Xperience's REST endpoint to authenticate requests and obtain data from your site. REST must be enabled and configured properly to use the [Zapier integrations](#zapier-integrations), regardless of whether you are using the custom module or not.
 
-[Follow our instructions](https://docs.xperience.io/k12sp/integrating-3rd-party-systems/kentico-rest-service/configuring-the-rest-service) for enabling the REST service, including all server configuration, Xperience settings, and the `runAllManagedModulesForAllRequests` attribute. Consider also enabling the __Allow sensitive fields for administrators__ setting if you'd like to get/set sensitive fields (e.g. _UserPassword_).
+[Follow our instructions](https://docs.xperience.io/integrating-3rd-party-systems/xperience-rest-service/configuring-the-rest-service) for enabling the REST service, including all server configuration, Xperience settings, and the `runAllManagedModulesForAllRequests` attribute. Consider also enabling the __Allow sensitive fields for administrators__ setting if you'd like to get/set sensitive fields (e.g. _UserPassword_).
 
 
 ## Triggering Zaps without the custom module
@@ -38,7 +38,7 @@ The native Zapier application uses Xperience's REST endpoint to authenticate req
 
 1. Copy the __Custom Webhook URL__ in the trigger
 
-1. In Xperience, determine when and how the Zapier trigger should be fired. For example, it could be within a [custom workflow action](https://docs.kentico.com/k12sp/configuring-kentico/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps), a [custom marketing automation action](https://docs.kentico.com/k12sp/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions), or an [event handler](https://docs.kentico.com/k12sp/custom-development/handling-global-events)
+1. In Xperience, determine when and how the Zapier trigger should be fired. For example, it could be within a [custom workflow action](https://docs.xperience.io/configuring-xperience/configuring-the-environment-for-content-editors/configuring-workflows/designing-advanced-workflows/creating-custom-action-workflow-steps), a [custom marketing automation action](https://docs.xperience.io/on-line-marketing-features/configuring-and-customizing-your-on-line-marketing-features/configuring-marketing-automation/developing-custom-marketing-automation-actions), or an [event handler](https://docs.xperience.io/custom-development/handling-global-events)
 
 1. In your code, use [`HttpClient`](https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netcore-3.1) to send a POST request to the __Custom Webhook URL__ with a body that contains the information you need in the Zap
 
@@ -52,7 +52,7 @@ The native Zapier application uses Xperience's REST endpoint to authenticate req
 
 ![selectapp](/assets/selectapp.png)
 
-3. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.kentico.com/k12sp/integrating-3rd-party-systems/kentico-rest-service) permissions
+3. Click __Continue__. On the next step, you need to provide the URL of your Xperience administration website, and the credentials of a user on the site with sufficient [REST](https://docs.xperience.io/integrating-3rd-party-systems/xperience-rest-service) permissions
 
 > :globe_with_meridians: If you are running Xperience locally, you can use [ngrok](https://ngrok.com/) to make it accessible.
 

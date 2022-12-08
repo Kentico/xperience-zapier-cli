@@ -1,13 +1,41 @@
+const updateObject = require('../utils/update/updateObject');
 const getObjectTypesField = require('../fields/getObjectTypesField');
-const updateObject = require('../utils/updateObject');
 
-async function execute(z, bundle) {
-  const result = await updateObject(z, bundle);
+const siteOrGlobalField = {
+  key: 'siteOrGlobal',
+  label: 'Site or global object',
+  type: 'string',
+  choices: ['Site', 'Global'],
+  default: 'Site',
+  altersDynamicFields: true,
+};
+const jsonInputField = {
+  key: 'updateValues',
+  label: 'Data to update',
+  placeholder: `{
+"KeyValue": "Settings key updated by Zapier"
+}`,
+  type: 'text',
+  helpText: 'JSON representing the object fields/values that you want to update.',
+};
+const identifierField = (z, bundle) => {
+  const helpText = bundle.inputData.siteOrGlobal === 'Site'
+    ? 'Must be a __code name__ or __ID__.'
+    : 'Must be a __code name__ or __GUID__.';
+  return {
+    key: 'identifier',
+    helpText,
+    type: 'string',
+  };
+};
 
-  return result;
-}
-
-const updateObjectAction = {
+/**
+ * A Zapier action which presents a drop-down list to select an Xperience object type.
+ * The user then selects whether the object is global or site-specific, and provides a
+ * code name, ID, or GUID to select the existing object. The input accepts JSON which
+ * contains the columns to update and their values.
+ */
+module.exports = {
   noun: 'Update Object',
   display: {
     hidden: false,
@@ -17,36 +45,19 @@ const updateObjectAction = {
   },
   key: 'update_object',
   operation: {
-    perform: execute,
+    perform: async (z, bundle) => updateObject(
+      z,
+      bundle,
+      bundle.inputData.objectType,
+      bundle.inputData.identifier,
+      bundle.inputData.siteOrGlobal,
+      bundle.inputData.updateValues,
+    ),
     inputFields: [
       getObjectTypesField({ required: true }),
-      {
-        key: 'siteOrGlobal',
-        label: 'Site or global object',
-        type: 'string',
-        choices: ['Site', 'Global'],
-        default: 'Site',
-        altersDynamicFields: true,
-      },
-      function f(z, bundle) {
-        const helpText = bundle.inputData.siteOrGlobal === 'Site'
-          ? 'Must be a __code name__ or __ID__.'
-          : 'Must be a __code name__ or __GUID__.';
-        return {
-          key: 'identifier',
-          helpText,
-          type: 'string',
-        };
-      },
-      {
-        key: 'updateValues',
-        label: 'Data to update',
-        placeholder: `{
-    "KeyValue": "Settings key updated by Zapier"
-}`,
-        type: 'text',
-        helpText: 'JSON representing the object fields/values that you want to update.',
-      },
+      siteOrGlobalField,
+      identifierField,
+      jsonInputField,
     ],
     sample: {
       CMS_SettingsKey: {
@@ -56,5 +67,3 @@ const updateObjectAction = {
     },
   },
 };
-
-module.exports = updateObjectAction;

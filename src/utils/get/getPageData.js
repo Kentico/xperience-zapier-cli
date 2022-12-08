@@ -1,7 +1,13 @@
 /**
- * Gets all columns and values for a page from the /rest/content endpoint
+ * Gets all columns and values for a specific page in the content tree.
+ *
+ * @param {any} z Zapier context.
+ * @param {any} bundle Zapier data bundle.
+ * @param {string} nodeAliasPath The path of the page to retrieve.
+ * @param {string} culture The culture of the page to retrieve.
+ * @returns {any} The page columns and their values.
  */
-async function getPageData(z, bundle, nodeAliasPath, culture) {
+module.exports = async (z, bundle, nodeAliasPath, culture) => {
   let retVal = {};
   let cultureParam = culture;
   if (!nodeAliasPath) return retVal;
@@ -32,6 +38,4 @@ async function getPageData(z, bundle, nodeAliasPath, culture) {
   });
 
   return retVal;
-}
-
-module.exports = getPageData;
+};

@@ -1,4 +1,11 @@
-async function getAllPageTypes(z, bundle) {
+/**
+ * Gets all page types from the Xperience website.
+ *
+ * @param {any} z Zapier context.
+ * @param {any} bundle Zapier data bundle.
+ * @returns {any[]} An array of Xperience page type ClassIDs and ClassNames.
+ */
+module.exports = async (z, bundle) => {
   let retVal = [];
   const options = {
     url: `${bundle.authData.website}/rest/cms.documenttype`,
@@ -10,7 +17,6 @@ async function getAllPageTypes(z, bundle) {
   };
 
   const response = await z.request(options);
-
   const types = z.JSON.parse(response.content).cms_documenttypes;
   if (types.length > 1) {
     const classes = types[0].CMS_Class;
@@ -19,7 +25,6 @@ async function getAllPageTypes(z, bundle) {
       name: obj.ClassName,
     }));
   }
-  return retVal;
-}
 
-module.exports = getAllPageTypes;
+  return retVal;
+};

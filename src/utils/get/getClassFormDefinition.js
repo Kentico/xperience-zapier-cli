@@ -1,35 +1,49 @@
 const { parseString } = require('xml2js');
 
-async function getClassSchema(z, bundle, identifier) {
+/**
+ * Generates an Xperience field from the returned data.
+ *
+ * @param {any} fieldDefinition An Xperience field from the form definition.
+ * @returns {any} An Xperience field.
+ */
+const makeField = (fieldDefinition) => {
+  const fieldAttrs = fieldDefinition.$;
+  const fieldProps = fieldDefinition.properties;
+  const field = {
+    column: fieldAttrs.column,
+    columntype: fieldAttrs.columntype,
+    columnsize: fieldAttrs.columnsize,
+    isPK: fieldAttrs.isPK || false,
+    allowempty: fieldAttrs.allowempty || false,
+    visible: fieldAttrs.visible && fieldAttrs.visible === 'true',
+  };
+  if (fieldProps) {
+    field.defaultvalue = fieldProps[0].defaultvalue ? fieldProps[0].defaultvalue[0] : undefined;
+    field.fieldcaption = fieldProps[0].fieldcaption ? fieldProps[0].fieldcaption[0] : undefined;
+    field.explanationtext = fieldProps[0].explanationtext
+      ? fieldProps[0].explanationtext[0] : undefined;
+    field.fielddescription = fieldProps[0].fielddescription
+      ? fieldProps[0].fielddescription[0] : undefined;
+  }
+
+  return field;
+};
+
+/**
+ * Gets the Xperience fields of the object type.
+ *
+ * @param {any} z Zapier context.
+ * @param {any} bundle Zapier data bundle.
+ * @param {string|number} identifier The class name or ID of the object type.
+ * @returns {any[]} An array of Xperience fields.
+ */
+module.exports = async (z, bundle, identifier) => {
   let retVal = [];
   if (!identifier) return retVal;
 
-  function makeField(fieldDefinition) {
-    const fieldAttrs = fieldDefinition.$;
-    const fieldProps = fieldDefinition.properties;
-    const field = {
-      column: fieldAttrs.column,
-      columntype: fieldAttrs.columntype,
-      columnsize: fieldAttrs.columnsize,
-      isPK: fieldAttrs.isPK || false,
-      allowempty: fieldAttrs.allowempty || false,
-      visible: fieldAttrs.visible && fieldAttrs.visible === 'true',
-    };
-    if (fieldProps) {
-      field.defaultvalue = fieldProps[0].defaultvalue ? fieldProps[0].defaultvalue[0] : undefined;
-      field.fieldcaption = fieldProps[0].fieldcaption ? fieldProps[0].fieldcaption[0] : undefined;
-      field.explanationtext = fieldProps[0].explanationtext
-        ? fieldProps[0].explanationtext[0] : undefined;
-      field.fielddescription = fieldProps[0].fielddescription
-        ? fieldProps[0].fielddescription[0] : undefined;
-    }
-
-    return field;
-  }
-
   let where;
   let identifierParam = identifier;
-  if (typeof identifierParam === 'string') {
+  if (Number.isNaN(Number.parseInt(identifierParam, 10))) {
     // "ma.automationaction" is actually "cms.workflowaction" in CMS_Class
     if (identifierParam === 'ma.automationaction') {
       identifierParam = 'cms.workflowaction';
@@ -75,7 +89,9 @@ async function getClassSchema(z, bundle, identifier) {
     if (foundClass.ClassIsDocumentType && foundClass.ClassNodeNameSource) {
       // Try to find column with same name as ClassNodeNameSource
       const nameColumn = retVal.filter((f) => f.column === foundClass.ClassNodeNameSource);
-      if (nameColumn.length > 0) nameColumn[0].isnamecolumn = true;
+      if (nameColumn.length > 0) {
+        nameColumn[0].isnamecolumn = true;
+      }
     }
 
     // Remove PK and GUID columns
@@ -83,6 +99,4 @@ async function getClassSchema(z, bundle, identifier) {
   }
 
   return retVal;
-}
-
-module.exports = getClassSchema;
+};

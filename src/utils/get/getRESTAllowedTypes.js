@@ -1,6 +1,13 @@
 const { parseString } = require('xml2js');
 
-async function getRESTAllowedTypes(z, bundle) {
+/**
+ * Gets the IDs and code names of all object types supported by the REST service.
+ *
+ * @param {any} z Zapier context.
+ * @param {any} bundle Zapier data bundle.
+ * @returns {any[]} An array of Xperience object types.
+ */
+module.exports = async (z, bundle) => {
   let retVal = [];
   const options = {
     url: `${bundle.authData.website}/rest`,
@@ -22,6 +29,4 @@ async function getRESTAllowedTypes(z, bundle) {
   });
 
   return retVal;
-}
-
-module.exports = getRESTAllowedTypes;
+};

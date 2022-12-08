@@ -1,8 +1,8 @@
 const zapierPackage = require('zapier-platform-core');
 const thisPackage = require('./package.json');
 const catchXperienceWebhook = require('./src/triggers/catchXperienceWebhook');
-const getObjectTypes = require('./src/triggers/dropdowns/getObjectTypes');
-const getPageTypes = require('./src/triggers/dropdowns/getPageTypes');
+const getObjectTypes = require('./src/fields/getObjectTypes');
+const getPageTypes = require('./src/fields/getPageTypes');
 const createObjectAction = require('./src/actions/createObjectAction');
 const createPageAction = require('./src/actions/createPageAction');
 const updatePageAction = require('./src/actions/updatePageAction');
@@ -13,6 +13,9 @@ const {
   afters = [],
 } = require('./src/authentication');
 
+/**
+ * Zapier integration configuration.
+ */
 module.exports = {
   version: thisPackage.version,
   platformVersion: zapierPackage.version,

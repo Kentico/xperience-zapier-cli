@@ -1,4 +1,11 @@
-function handleErrors(response, z) {
+/**
+ * Skips or throws errors for specific response statuses.
+ *
+ * @param {any} response The HTTP response.
+ * @param {any} z Zapier context.
+ * @returns {any} The response, if successful.
+ */
+module.exports = (response, z) => {
   switch (response.status) {
     case 200:
     case 201:
@@ -7,6 +14,12 @@ function handleErrors(response, z) {
       throw new z.errors.Error(
         'Please check your credentials, or the Xperience Event Log for more information',
         'AuthenticationError',
+        response.status,
+      );
+    case 403:
+      throw new z.errors.Error(
+        'You are not authorized to perform this action. Please check the user\'s permissions and REST settings',
+        'AuthorizationError',
         response.status,
       );
     case 404:
@@ -19,6 +32,4 @@ function handleErrors(response, z) {
         response.status,
       );
   }
-}
-
-module.exports = handleErrors;
+};

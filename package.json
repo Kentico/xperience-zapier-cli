@@ -7,7 +7,7 @@
   "author": "Eric Dugre <ericd@kentico.com>",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint src/**/*.js",
+    "lint": "npx eslint src/**/*",
     "build": "zapier build",
     "push": "zapier push"
   },
@@ -20,6 +20,7 @@
     "eslint": "^8.29.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.6.4",
     "zapier-platform-cli": "12.2.0"
   }
 }

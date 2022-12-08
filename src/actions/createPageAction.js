@@ -1,13 +1,12 @@
+const createPage = require('../utils/create/createPage');
 const getPageTypesField = require('../fields/getPageTypesField');
-const getPageColumnsField = require('../fields/getPageColumnsField');
-const createPage = require('../utils/createPage');
+const getPageTypeFields = require('../fields/getPageTypeFields');
 
-async function execute(z, bundle) {
-  const result = await createPage(z, bundle);
-  return result;
-}
-
-const createPageAction = {
+/**
+ * A Zapier action which presents a drop-down list to select an Xperience page type,
+ * then dynamically displays that type's fields.
+ */
+module.exports = {
   noun: 'Create New Page',
   display: {
     hidden: false,
@@ -17,12 +16,16 @@ const createPageAction = {
   },
   key: 'create_page',
   operation: {
-    perform: execute,
+    perform: async (z, bundle) => createPage(
+      z,
+      bundle,
+      bundle.inputData.classID,
+      bundle.inputData.parentPath,
+      bundle.inputData,
+    ),
     inputFields: [
       getPageTypesField({ required: true, altersDynamicFields: true }),
-      async function f(z, bundle) {
-        return getPageColumnsField(z, bundle);
-      },
+      getPageTypeFields,
     ],
     sample: {
       typeName: 'DancingGoat.Article',
@@ -30,5 +33,3 @@ const createPageAction = {
     outputFields: [],
   },
 };
-
-module.exports = createPageAction;
