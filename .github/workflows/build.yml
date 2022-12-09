@@ -1,0 +1,21 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  javascript:
+      name: Build Javascript
+      runs-on: ubuntu-latest
+      steps:
+        - name: Code Checkout
+          uses: actions/checkout@v2
+        - name: Install Dependencies
+          run: npm ci
+        - name: Code Linting
+          run: npm run lint
+        - name: Zapier build
+          run: npm run build
