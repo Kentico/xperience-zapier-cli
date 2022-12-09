@@ -31,7 +31,7 @@ module.exports = async (z, bundle, nodeAliasPath, culture) => {
 
   const documents = z.JSON.parse(response.content).cms_documents[0];
   Object.keys(documents).forEach((key) => {
-    if (Object.prototype.hasOwnProperty.call(document, key)) {
+    if (Object.prototype.hasOwnProperty.call(documents, key)) {
       const firstProp = documents[key];
       [retVal] = firstProp;
     }

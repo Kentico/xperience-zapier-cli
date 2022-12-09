@@ -44,7 +44,6 @@ module.exports = {
       bundle,
       bundle.inputData.culture,
       bundle.inputData.nodeAliasPath,
-      bundle.inputData.objectType,
       bundle.inputData.updateValues,
     ),
     inputFields: [

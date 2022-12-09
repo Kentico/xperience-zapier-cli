@@ -93,9 +93,6 @@ module.exports = async (z, bundle, identifier) => {
         nameColumn[0].isnamecolumn = true;
       }
     }
-
-    // Remove PK and GUID columns
-    retVal = retVal.filter((f) => !f.isPK && f.columntype !== 'guid');
   }
 
   return retVal;
