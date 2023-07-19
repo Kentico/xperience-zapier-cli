@@ -16,6 +16,11 @@ You can read more about the native Zapier integration here: https://zapier.com/a
 - __Create New Page__: Creates a new page in the content tree of the selected page type. See [the example](#zapier-setup) for details.
 - __Update Page__: Updates an existing page in the content tree based on the NodeAliasPath. See [Updating pages](#updating-pages).
 - __Update Object__: Updates an existing site or global object. See [Updating objects](#updating-objects).
+- __Move to Next Step__: Moves a page under workflow to the next step.
+
+### Searches
+
+- __Find Page__: Search for a page in your content tree based on a SQL query
 
 ## Installing the custom module
 

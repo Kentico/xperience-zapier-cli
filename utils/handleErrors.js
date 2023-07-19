@@ -8,7 +8,13 @@ function handleErrors(response, z, bundle) {
                 'Please check your credentials, or the Xperience Event Log for more information',
                 'AuthenticationError',
                 response.status
-                );
+            );
+        case 403:
+            throw new z.errors.Error(
+                `You are not authorized to perform this action. Please check the user's permissions and REST settings`,
+                'AuthorizationError',
+                response.status
+            );
         case 404:
             response.skipThrowForStatus = true;
             return response;
@@ -17,7 +23,7 @@ function handleErrors(response, z, bundle) {
                 `Response status ${response.status}. Please check the Xperience Event Log`,
                 'ResponseError',
                 response.status
-                );
+            );
     }
 }
 
